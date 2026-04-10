@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Moses Café</title>
+
+<!-- ================= TIPOGRAFÍA ================= -->
+<!-- 📌 Fuente elegante tipo cafetería premium -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+<!-- 📌 Aquí conectas tu CSS -->
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="logo-container">
+        <img src="assets/logo.png" class="logo-img"> 
+        <div class="logo-text">Moses</div>
+    </div>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#menu">Menú</a>
+        <a href="#reservas">Reservas</a>
+        <a href="#contacto">Ubicación</a>
+    </nav>
+</header>
+
+<section id="inicio" class="hero">
+    <div class="hero-content">
+
+        <!-- IZQUIERDA -->
+        <div class="hero-left">
+            <h1>CAFÉ,<br>COCINA &<br>ORIGEN</h1>
+        </div>
+
+        <!-- DERECHA -->
+        <div class="hero-right">
+            <p class="hero-tagline">Where every cup feels like home</p>
+            
+            <p class="hero-subtitle">
+                En Moses Café creemos en el valor del detalle y en la experiencia de compartir.
+                Desde nuestro hogar, ofrecemos más que sabor: un momento para disfrutar.
+
+            </p>
+            
+            <div class="hero-btns">
+                <button id="btn-hero-menu" class="btn-base btn-primary">Ver Menú</button>
+                <button id="btn-hero-reserva" class="btn-base btn-secondary">Reservar Mesa</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= NOSOTROS ================= -->
+<section id="nosotros" class="section">
+
+    <div class="about-container">
+
+        <div class="about-box animar">
+
+            <div class="text-content">
+
+                <h2>Sobre Nosotros</h2>
+
+                <p>
+                    Moses Café nace del deseo de crear un lugar donde las personas puedan sentirse en casa, compartir y disfrutar sin prisa.
+                </p>
+
+                <p>
+                    Venimos de la pasión por el servicio, la cocina y el café bien hecho, pero sobre todo de la idea de que los mejores momentos suceden alrededor de una mesa.
+                </p>
+
+                <p>
+                    Nuestro objetivo es ofrecer más que productos: queremos brindar una experiencia cercana, donde cada detalle, cada sabor y cada visita se conviertan en un recuerdo.
+                </p>
+
+                <p class="frase-nosotros">
+                    Más que café, somos momentos.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= MENÚ ================= -->
+<section id="menu" class="section">
+    <h2 class="titulo-seccion">Menú</h2>
+
+    <!-- 🍽️ BOTONES DE CATEGORÍAS -->
+    <!-- 👉 Al hacer clic abre el modal dinámico -->
+    <div class="menu-categorias">
+
+        <!-- 📸 IMÁGENES QUE DEBES TENER -->
+        <!-- assets/cafes1.jpg, cafes2.jpg, cafes3.jpg -->
+        <button onclick="abrirMenu('cafes')">Bebidas</button>
+
+        <!-- assets/comidas1.jpg, comidas2.jpg, comidas3.jpg -->
+        <button onclick="abrirMenu('comidas')">Alimentos</button>
+
+        <!-- assets/panaderia1.jpg, panaderia2.jpg, panaderia3.jpg -->
+        <button onclick="abrirMenu('panaderia')">Panadería</button>
+
+    </div>
+</section>
+
+<!-- ================= MODAL MENÚ ================= -->
+<!-- 📌 Se llena dinámicamente con JavaScript -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarMenu()">✖</span>
+
+        <!-- 📦 Aquí se insertan los productos automáticamente -->
+        <div id="contenidoMenu"></div>
+    </div>
+</div>
+
+<!-- ================= RESERVAS ================= -->
+<section id="reservas" class="section reservas-grid">
+
+    <!-- 🖼️ IMAGEN DECORATIVA -->
+    <!-- 👉 assets/reserva.jpg -->
+    <!-- 👉 Recomendado: mesa, café, ambiente elegante -->
+    <div class="reserva-img"></div>
+
+    <!-- 📋 FORMULARIO -->
+    <div class="reserva-form">
+        <h2>Reservaciones</h2>
+        
+        <!-- 📌 FORMULARIO PRINCIPAL -->
+        <!-- 👉 Validación tipo app + envío con EmailJS -->
+        <form id="reservaForm" class="reserva-form">
+            
+            <!-- 👤 NOMBRE -->
+            <div class="fila">
+                <div>
+                    <input type="text" id="nombre" placeholder="Nombres">
+                    <small id="errorNombre" class="mensaje-error"></small>
+                </div>
+                
+                <div>
+                    <input type="text" id="apellido" placeholder="Apellidos">
+                    <small id="errorApellido" class="mensaje-error"></small>
+                </div>
+            </div>
+            
+            <!-- 📅 FECHA Y HORA -->
+            <div class="fila">
+                <div>
+                    <input type="date" id="fecha">
+                    <small id="errorFecha" class="mensaje-error"></small>
+                </div>
+                
+                <div>
+                    <input type="time" id="hora" min="06:00" max="23:00">
+                    <small id="errorHora" class="mensaje-error"></small>
+                </div>
+            </div>
+            
+            <!-- 👥 PERSONAS + TEL -->
+            <div class="fila">
+                <div>
+                    <input type="number" id="personas" placeholder="Personas">
+                    <small id="errorPersonas" class="mensaje-error"></small>
+                </div>
+                
+                <div>
+                    <!-- 📞 SOLO 10 DÍGITOS -->
+                    <input type="tel" id="telefono" placeholder="Teléfono">
+                    <small id="errorTelefono" class="mensaje-error"></small>
+                </div>
+            </div>
+
+            <button type="submit">Reservar</button>
+        </form>
+        
+        <!-- ✅ MENSAJE DE ÉXITO -->
+        <div id="mensajeExito" class="exito">
+            ✅ Reserva realizada correctamente
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= UBICACIÓN ================= -->
+<section id="contacto" class="section ubicacion-grid">
+
+    <!-- 📍 MAPA -->
+    <!-- 👉 Ya está configurado con Google Maps -->
+    <div class="mapa-reserva">
+        <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11713.728530550494!2d-89.701069726401!3d21.00413537581043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f567500313dfe79%3A0x92a1f1475bce5d9a!2sMoses%20caf%C3%A9!5e0!3m2!1ses-419!2smx!4v1775714634952!5m2!1ses-419!2smx"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+</div>
+
+    <!-- 📍 INFORMACIÓN DEL NEGOCIO -->
+<div class="info">
+
+    <!-- TARJETA HORARIOS -->
+    <div class="card-info animar">
+        <h2>Horarios de Servicio</h2>
+
+        <p><strong>Lunes a Jueves:</strong> 7:00 am - 10:00 pm</p>
+        <p><strong>Viernes a Domingo:</strong> 8:00 am - 11:00 pm</p>
+
+        <p class="frase">"Vive momentos únicos, visítanos"</p>
+    </div>
+
+    <!-- TARJETA CONTACTO -->
+    <div class="card-info animar delay">
+        <h2>Contacto</h2>
+
+        <p>📞  999 172 0143</p>
+        <p>✉ contacto@mosescafe.com</p>
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= REDES ================= -->
+<div class="social">
+
+    <!-- 📱 WHATSAPP -->
+    <!-- 👉 assets/whats.png (icono PNG transparente) -->
+    <a href="https://wa.me/529991720143" target="_blank">
+        <img src="assets/whats.png">
+    </a>
+
+    <!-- 📸 INSTAGRAM -->
+    <!-- 👉 assets/insta.png recomendado (mejor que .avif) -->
+    <a href="https://www.instagram.com/mosescafemid/" target="_blank">
+        <img src="assets/insta.avif">
+    </a>
+
+    <!-- 👍 FACEBOOK -->
+    <!-- 👉 assets/face.png recomendado -->
+    <a href="https://www.facebook.com/Mosescafemid" target="_blank">
+        <img src="assets/face.webp">
+    </a>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <p>© 2026 Moses Café</p>
+</footer>
+
+<!-- ================= EMAILJS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("l7nmj2hdaFgx7CvpS"); // 🔑 IMPORTANTE: pon tu clave real
+})();
+</script>
+
+<!-- 📜 SCRIPT PRINCIPAL -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
